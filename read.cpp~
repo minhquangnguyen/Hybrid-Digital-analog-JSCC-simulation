@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+using namespace std;
+int main(int argc, char* argv[])
+{
+	std::ifstream orf, rawf;
+	std::ofstream out;
+	orf.open(argv[1], std::ios::in | std::ios::binary);
+	rawf.open(argv[2], std::ios::in | std::ios::binary);
+	out.open("train.dat", std::ios::out | std::ios::binary);
+	float f1, f2, f3;
+	int i = 0;
+	std::cout.precision(4);
+	do
+	{
+		
+		orf.read((char*)&f1, sizeof(float));
+		rawf.read((char*)&f1, sizeof(float));
+		f3 = f1 - f2;
+		out.write(reinterpret_cast<const char*>(&f3), sizeof(float));
+		if(inf.eof())
+			break;
+	}
+	while(!inf.eof());
+		
+	orf.close();
+	rawf.close();
+	out.close();
+	return 0;
+}
